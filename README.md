@@ -21,9 +21,7 @@ Your existing images and containers may not be visible.
 
 ## Known issues
 
-1. Wasm networking only works with host networking. Workaround: Use `docker run --network host` or `network_mode: host` for Compose.
-2. Host networking ports are not exposed on the host machine. Workaround: If you want to do network requests, use a container with host networking `docker run --rm --network host curlimages/curl curl ...`.
-3. `docker-compose` may not exit cleanly when interrupted. Workaround: Clean up `docker-compose` processes by sending them a SIGKILL (`killall -9 docker-compose`).
+1. `docker-compose` may not exit cleanly when interrupted. Workaround: Clean up `docker-compose` processes by sending them a SIGKILL (`killall -9 docker-compose`).
 
 ## Show me the demos!
 

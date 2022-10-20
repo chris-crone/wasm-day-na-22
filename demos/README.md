@@ -61,24 +61,24 @@ $ docker image inspect server | grep -A 3 "Architecture"
 You can initialize the database by calling the `/init` endpoint on the Web server:
 
 ```console
-$ docker run --rm --network host curlimages/curl curl -s http://localhost:8080/init
+$ curl -s http://localhost:8080/init
 {"status":true}% 
 ```
 
 You can query the `/orders` endpoint to see what's in the database. This will return an empty list:
 
 ```console
-$ docker run --rm --network host curlimages/curl curl -s http://localhost:8080/orders
+$ curl -s http://localhost:8080/orders
 []%
 ```
 
 You can then seed the database with some orders by posting the contents of the `orders.json` file and checking the `/orders` endpoint again:
 
 ```console
-$ cat orders.json | docker run --rm --network host -i curlimages/curl curl -s http://localhost:8080/create_orders -X POST -d @-
+$ curl -s http://localhost:8080/create_orders -X POST -d @orders.json
 {"status":true}% 
 
-$ docker run --rm --network host curlimages/curl curl -s http://localhost:8080/orders | jq
+$ curl -s http://localhost:8080/orders | jq
 [
   {
     "order_id": 1,
@@ -131,10 +131,10 @@ $ docker run --rm --network host curlimages/curl curl -s http://localhost:8080/o
 You can delete orders by performing a GET on the `/delete_order` endpoint setting the ID in the query string:
 
 ```console
-$ docker run --rm --network host curlimages/curl curl -s http://localhost:8080/delete_order\?id\=2
+$ curl -s http://localhost:8080/delete_order\?id\=2
 {"status":true}%
 
-$ docker run --rm --network host curlimages/curl curl -s http://localhost:8080/orders | jq
+$ curl -s http://localhost:8080/orders | jq
 [
   {
     "order_id": 1,
