@@ -21,7 +21,11 @@ Your existing images and containers may not be visible.
 
 ## Known issues
 
-1. `docker-compose` may not exit cleanly when interrupted. Workaround: Clean up `docker-compose` processes by sending them a SIGKILL (`killall -9 docker-compose`).
+1. `docker-compose` may not exit cleanly when interrupted
+    - Workaround: Clean up `docker-compose` processes by sending them a SIGKILL (`killall -9 docker-compose`).
+1. Pushes to Hub might give an error stating `server message: insufficient_scope: authorization failed`, even after logging in using Docker Desktop
+    - Workaround: Run `docker login` in the CLI
+
 
 ## Show me the demos!
 
