@@ -14,6 +14,8 @@ To use Docker with WASI, you will need to download a technical preview build of 
 * Linux Arm64 ([deb](https://dockr.ly/3TDcjRV))
 * Linux AMD64 ([deb](https://dockr.ly/3TgpWH8), [rpm](https://dockr.ly/3eG6Mvp), [tar](https://dockr.ly/3yUhdCk))
 
+**Or alternatively,** you can set up a [WASI compatible context of Docker Engine](./server) on a headless machine (e.g., a cloud VM or a server).
+
 > :warning: This is a technical preview build of Docker Desktop and it may not behave as you expect. Back up your containers and images before trying it.
 
 The build has the [containerd image store](https://docs.docker.com/desktop/containerd/) enabled and it cannot be disabled.
@@ -25,10 +27,6 @@ Your existing images and containers may not be visible.
     - Workaround: Clean up `docker-compose` processes by sending them a SIGKILL (`killall -9 docker-compose`).
 1. Pushes to Hub might give an error stating `server message: insufficient_scope: authorization failed`, even after logging in using Docker Desktop
     - Workaround: Run `docker login` in the CLI
-
-## Running a server
-
-If you'd like to setup Docker with WASI on a server, take a look at the instructions in [server](./server).
 
 ## Show me the demos!
 
