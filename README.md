@@ -26,6 +26,9 @@ Your existing images and containers may not be visible.
 1. Pushes to Hub might give an error stating `server message: insufficient_scope: authorization failed`, even after logging in using Docker Desktop
     - Workaround: Run `docker login` in the CLI
 
+## Running a server
+
+If you'd like to setup Docker with WASI on a server, take a look at the instructions in [server](./server).
 
 ## Show me the demos!
 
