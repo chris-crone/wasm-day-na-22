@@ -82,6 +82,8 @@ To avoid needing to set the `--context` flag, you can switch the context:
 docker context use wasm
 ```
 
+Once you switch to the `wasm` context, you can run `docker compose up` in the [demos](../demos)
+
 ## Reset
 
 Stop the running Docker daemon by sending it a SIGINT.
