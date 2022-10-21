@@ -2,7 +2,7 @@
 
 ## Demo 1: WasmEdge
 
-> :information_source: This demo is not containerized.
+> :information_source: This demo does not use Docker.
 
 A demo of using Wasm with Tensorflow to do image classification. Link to demo repository: https://github.com/WasmEdge/wasmedge_hyper_demo/tree/main/server-tflite
 
