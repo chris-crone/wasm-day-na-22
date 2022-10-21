@@ -175,7 +175,7 @@ $ curl -s http://localhost:8080/orders | jq
 ]
 ```
 
-To stop the service and remove all data, simply hit `ctrl + c` in the terminal where you're running Compose. You can then remove everything with `docker compose down --volumes`
+To stop the service and remove all data, simply hit `ctrl + c` in the terminal where you're running Compose. You can then remove everything with `docker compose down --volumes`:
 
 ```console
 ^CGracefully stopping... (press Ctrl+C again to force)
@@ -187,4 +187,18 @@ To stop the service and remove all data, simply hit `ctrl + c` in the terminal w
 [+] Running 2/0
  ⠿ Container microservice-rust-mysql-db-1      Removed                                                             0.0s
  ⠿ Container microservice-rust-mysql-server-1  Removed                                                             0.0s
+```
+
+If you'd like to share a the Wasm module, you can simply build it and push it to the Docker Hub:
+
+```console
+$ docker buildx build --platform wasi/wasm32 -t ccrone/wasm-day-na-22 .
+...
+ => exporting to image                                                                                                                       0.0s
+ => => exporting layers                                                                                                                      0.0s
+ => => exporting manifest sha256:2ca02b5be86607511da8dc688234a5a00ab4d58294ab9f6beaba48ab3ba8de56                                            0.0s
+ => => exporting config sha256:a45b465c3b6760a1a9fd2eda9112bc7e3169c9722bf9e77cf8c20b37295f954b                                              0.0s
+ => => naming to docker.io/ccrone/wasm-day-na-22:latest                                                                                      0.0s
+ => => unpacking to docker.io/ccrone/wasm-day-na-22:latest                                                                                   0.0s
+ $ docker push ccrone/wasm-day-na-22
 ```
