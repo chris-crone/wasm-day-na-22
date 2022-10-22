@@ -9,11 +9,10 @@ Prerequisites:
 
 ## Install WasmEdge
 
-Follow the instructions [here](https://wasmedge.org/book/en/quick_start/install.html) to install WasmEdge.
+Follow the instructions [here](https://wasmedge.org/book/en/quick_start/install.html) to install WasmEdge into the `/usr/local` directory for all users.
 
 ```bash
-curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | bash -s -- -e all
-source $HOME/.wasmedge/env
+curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | sudo bash -s -- -e all -p /usr/local
 ```
 
 You will also need to install the containerd shim.
@@ -49,7 +48,7 @@ $ cat /etc/docker/daemon.json
 Finally start the Docker daemon in the background:
 
 ```bash
-nohup sudo -b sh -c "LD_LIBRARY_PATH=$HOME/.wasmedge/lib ./bundles/binary-daemon/dockerd -D -H unix:///tmp/docker.sock --data-root /tmp/root --pidfile /tmp/docker.pid"
+nohup sudo -b sh -c "./bundles/binary-daemon/dockerd -D -H unix:///tmp/docker.sock --data-root /tmp/root --pidfile /tmp/docker.pid"
 ```
 
 ## Run
