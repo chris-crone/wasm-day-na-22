@@ -5,7 +5,8 @@ The approach will allow you to run Docker with WASI alongside your existing Dock
 
 Prerequisites:
 - [Docker Desktop](https://docs.docker.com/desktop/install/linux-install/) 
-- or [Docker on your server](https://docs.docker.com/engine/install/#server) + [Docker compose plugin](https://docs.docker.com/compose/install/linux/)
+- Or [Docker on your server](https://docs.docker.com/engine/install/#server) + [Docker Compose](https://docs.docker.com/compose/install/linux/)
+  - You can install both using `curl https://get.docker.com | sh`
 
 ## Install WasmEdge
 
