@@ -92,7 +92,11 @@ Once you switch to the `wasm` context, you can run `docker compose up` in the [d
 
 ## Reset
 
-Stop the running Docker daemon by sending it a SIGINT.
+Stop the running Docker daemon by sending it a SIGINT:
+
+```bash
+sudo kill -3 $(cat /tmp/dockerd.pid)
+```
 
 Restore your backup of your daemon configuration if you made one:
 
