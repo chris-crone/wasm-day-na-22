@@ -4,11 +4,17 @@ This will guide you in building and setting up Docker Engine with WASI on a Linu
 The approach will allow you to run Docker with WASI alongside your existing Docker Engine install.
 
 Prerequisites:
-- [Docker Desktop](https://docs.docker.com/desktop/install/linux-install/) or [Docker on your server](https://docs.docker.com/engine/install/#server)
+- [Docker Desktop](https://docs.docker.com/desktop/install/linux-install/) 
+- Or [Docker on your server](https://docs.docker.com/engine/install/#server) + [Docker Compose](https://docs.docker.com/compose/install/linux/)
+  - You can install both using `curl https://get.docker.com | sh`
 
 ## Install WasmEdge
 
-Follow the instructions [here](https://wasmedge.org/book/en/quick_start/install.html) to install WasmEdge.
+Follow the instructions [here](https://wasmedge.org/book/en/quick_start/install.html) to install WasmEdge into the `/usr/local` directory for all users.
+
+```bash
+curl -sSf https://raw.githubusercontent.com/WasmEdge/WasmEdge/master/utils/install.sh | sudo bash -s -- -e all -p /usr/local
+```
 
 You will also need to install the containerd shim.
 1. Downloading the `containerd-shim-wasmedge-v1` from their [release page](https://github.com/second-state/runwasi/releases)
@@ -40,10 +46,10 @@ $ cat /etc/docker/daemon.json
 }
 ```
 
-Finally start the Docker daemon:
+Finally start the Docker daemon in the background:
 
 ```bash
-sudo sh -c "LD_LIBRARY_PATH=$HOME/.wasmedge/lib ./bundles/binary-daemon/dockerd -D -H unix:///tmp/docker.sock --data-root /tmp/root --pidfile /tmp/docker.pid"
+nohup sudo -b sh -c "./bundles/binary-daemon/dockerd -D -H unix:///tmp/docker.sock --data-root /tmp/root --pidfile /tmp/docker.pid"
 ```
 
 ## Run
@@ -86,7 +92,11 @@ Once you switch to the `wasm` context, you can run `docker compose up` in the [d
 
 ## Reset
 
-Stop the running Docker daemon by sending it a SIGINT.
+Stop the running Docker daemon by sending it a SIGINT:
+
+```bash
+sudo kill -3 $(cat /tmp/dockerd.pid)
+```
 
 Restore your backup of your daemon configuration if you made one:
 
